@@ -1,0 +1,73 @@
+version: "3"
+services:
+  nginx:
+    build: './docker/nginx/'
+    depends_on:
+      - backend
+      - mysql
+    networks:
+      - app
+    ports:
+      - '8080:80'
+    volumes:
+      - ./backend:/var/www/html/
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/var/www/html/
+      - ./docker/php/config/config.ini:/usr/local/etc/php/conf.d/uploads.ini
+    depends_on:
+      - mysql
+    networks:
+      - app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app/frontend
+    depends_on:
+      - backend
+    networks:
+      - app
+
+  mysql:
+    image: mysql:5.7.22
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "33006:3306"
+    environment:
+      MYSQL_DATABASE: training
+      MYSQL_USER: thinhnd
+      MYSQL_PASSWORD: 12345678
+      MYSQL_ROOT_PASSWORD: 12345678
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - app
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8090:80"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+    networks:
+      - app
+    depends_on:
+      - mysql
+networks:
+  app:
+    driver: bridge
