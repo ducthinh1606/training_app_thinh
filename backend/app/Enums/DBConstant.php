@@ -9,8 +9,5 @@ namespace App\Enums;
  */
 class DBConstant extends BaseEnum
 {
-    // Task status
-    const NEW = 1;
-    const DOING = 2;
-    const DONE = 3;
+    //
 }

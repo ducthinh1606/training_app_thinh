@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\ErrorType;
+use App\Enums\SuccessType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Services\UserService;
 
 class AuthController extends BaseController
@@ -43,5 +45,21 @@ class AuthController extends BaseController
         ];
 
         return $this->sendSuccess($data, trans('response.success'));
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        $credentials = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
+
+        $register = $this->userService->register($credentials);
+
+        if (!$register) {
+            return $this->sendError(ErrorType::CODE_4091, ErrorType::STATUS_4091, trans('errors.MSG_4091'));
+        }
+
+        return $this->sendSuccessNoData(SuccessType::CODE_201, trans('response.success'));
     }
 }
