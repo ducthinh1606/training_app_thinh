@@ -20,4 +20,9 @@ class UserService
     {
         return $this->userRepository->getUser($email);
     }
+
+    public function register($credentials)
+    {
+        return $this->userRepository->register($credentials);
+    }
 }

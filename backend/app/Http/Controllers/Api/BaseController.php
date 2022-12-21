@@ -20,6 +20,11 @@ class BaseController extends Controller
         return $this->responseSuccess($data, $message);
     }
 
+    protected function sendSuccessNoData($code = 200, $message = null): JsonResponse
+    {
+        return $this->responseSuccessNoData($code, $message);
+    }
+
     protected function sendError($code = 5000, $statusCode = 500, $message = null): JsonResponse
     {
         return $this->responseError($code, $statusCode, $message);

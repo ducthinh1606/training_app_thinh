@@ -14,6 +14,16 @@ trait ResponseApiHandle {
         return response()->json($response, 200);
     }
 
+    public function responseSuccessNoData($code = 200, $message = null)
+    {
+        $response = [
+            'code' => $code,
+            'message' => $message,
+        ];
+
+        return response()->json($response, 200);
+    }
+
     public function responseError($code = 5000, $statusCode = 500, $message = null)
     {
         $response = [
