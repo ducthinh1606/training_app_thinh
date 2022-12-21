@@ -3,25 +3,32 @@
 1. Copy file .env.example to .env
 ```
 cd backend
-cp .env.example to .env
+cp .env.example .env
 ```
 
 2. Build docker
 ```
-docker-composer up -d --build
+docker-compose up -d --build
 ```
 
-3. Composer install
+3. Change permission
 ```
-docker-compose exec php sh
+docker-compose exec nginx sh
+chmod -R 777 /var/www/html/storage
+exit
+```
+
+4. Composer install
+```
+docker-compose exec backend sh
 composer install
 php artisan key:generate
 php artisan config:clear
 ```
 
-4. Migrate database
+5. Migrate database
 ```
-docker-compose exec php sh
+docker-compose exec backend sh
 php artisan migrate
 php artisan db:seed
 ```
