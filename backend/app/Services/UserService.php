@@ -18,11 +18,19 @@ class UserService
 
     public function getUser($email)
     {
-        return $this->userRepository->getUser($email);
+        try {
+            return $this->userRepository->getUser($email);
+        } catch (Exception) {
+            return false;
+        }
     }
 
     public function register($credentials)
     {
-        return $this->userRepository->register($credentials);
+        try {
+            return $this->userRepository->register($credentials);
+        } catch (Exception) {
+            return false;
+        }
     }
 }

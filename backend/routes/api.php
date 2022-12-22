@@ -20,5 +20,11 @@ Route::namespace('Api')->group(function () {
 
     Route::middleware(['auth:api'])->group(function () {
         Route::post('logout', 'AuthController@logout');
+
+        // Task statuses
+        Route::get('task-statuses', 'TaskStatusController@index');
+        Route::post('task-statuses', 'TaskStatusController@store');
+        Route::put('task-statuses/{id}', 'TaskStatusController@update');
+        Route::delete('task-statuses/{id}', 'TaskStatusController@destroy');
     });
 });
