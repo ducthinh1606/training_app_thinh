@@ -9,6 +9,11 @@ namespace App\Enums;
  */
 class SuccessType extends BaseEnum
 {
+    //Success
+    const CODE_200 = '200';
+
+    const STATUS_200 = 200;
+
     // Created
     const CODE_201 = '201';
 
