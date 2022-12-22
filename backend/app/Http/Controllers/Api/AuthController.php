@@ -62,4 +62,11 @@ class AuthController extends BaseController
 
         return $this->sendSuccessNoData(SuccessType::CODE_201, trans('response.success'));
     }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        return $this->sendSuccessNoData(SuccessType::CODE_200, trans('response.success'));
+    }
 }
