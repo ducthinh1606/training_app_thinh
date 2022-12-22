@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories\User;
 
 use App\Repositories\BaseRepository;
-use Mockery\Exception;
+use Exception;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
@@ -25,10 +25,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function register($credentials)
     {
-        try {
-            return $this->model->create($credentials);
-        } catch (Exception $exception) {
-            return $exception;
-        }
+        return $this->model->create($credentials);
     }
 }
