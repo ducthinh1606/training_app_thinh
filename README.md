@@ -129,13 +129,13 @@ $ docker-compose down
 ```
     - Compliant RESTful api
 ```
-| Method name | Action           | URL      | CRUD | Method |
-|:------------|:-----------------|:---------| :--- |:-------|
-| index       | show all items   | /index   | R| GET    |
-| show        | show detail item | /show    | R | GET    |
-| store       | create an item   | /store   | C | POST   |
-| update      | update an item   | /update  | U | PUT    |
-| destroy     | delete an item   | /destroy | D | DELETE |
+| Method name | Action           | URL   | CRUD | Method |
+|:------------|:-----------------|:------| :--- |:-------|
+| index       | show all items   | /     | R| GET    |
+| show        | show detail item | /{id} | R | GET    |
+| store       | create an item   | /     | C | POST   |
+| update      | update an item   | /     | U | PUT    |
+| destroy     | delete an item   | /{id} | D | DELETE |
 
 # Formatter rules
 ```
