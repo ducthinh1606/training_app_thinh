@@ -1,0 +1,19 @@
+.add-task {
+  text-align: center;
+  margin: 20px;
+
+  .add-task-btn {
+    background: #76b852;
+    color: white;
+    min-width: 200px;
+    height: 50px;
+    border: none;
+    font-size: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
