@@ -1,0 +1,16 @@
+.list-task-by-status {
+  background: honeydew;
+  min-width: 250px;
+  margin: 0 15px;
+  box-shadow: 10px 10px 10px azure;
+  border-radius: 10px;
+
+  .status {
+    background: #FFE5CC;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+}

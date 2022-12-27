@@ -1,0 +1,64 @@
+.list-task {
+  .title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    padding: 20px;
+  }
+
+  .search {
+    text-align: center;
+    padding-bottom: 20px;
+
+    .form-search {
+      padding: 12px 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .input-task-name, .select-task-status {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        input {
+          height: 24px;
+        }
+
+        select {
+          height: 30px;
+        }
+      }
+
+      .select-task-status {
+        margin-left: 30px;
+      }
+
+      button {
+        margin-left: 30px;
+        min-width: 80px;
+        height: 30px;
+        background: deepskyblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  .list {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+  }
+}
