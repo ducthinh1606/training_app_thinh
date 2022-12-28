@@ -18,7 +18,7 @@ function ListTask() {
         }
     ]
 
-    const listTaskStatus = demoTaskStatus.map((data) => <ListTaskByStatus taskStatus={data}/>)
+    const listTaskStatus = demoTaskStatus.map((data) => <ListTaskByStatus key={data.status} taskStatus={data}/>)
 
     return (
         <div className="list-task">

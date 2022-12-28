@@ -20,7 +20,7 @@ class TaskStatusService
     {
         try {
             return $this->taskStatusRepository->all();
-        } catch (Exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }
@@ -29,7 +29,7 @@ class TaskStatusService
     {
         try {
             return $this->taskStatusRepository->create($data);
-        } catch (Exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }
@@ -38,7 +38,7 @@ class TaskStatusService
     {
         try {
             return $this->taskStatusRepository->update($id, $data);
-        } catch (Exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }

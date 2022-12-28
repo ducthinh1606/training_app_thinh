@@ -20,7 +20,7 @@ class UserService
     {
         try {
             return $this->userRepository->getUser($email);
-        } catch (Exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }
@@ -29,7 +29,7 @@ class UserService
     {
         try {
             return $this->userRepository->register($credentials);
-        } catch (Exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }
