@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import axios from "axios";
+import {BrowserRouter} from "react-router-dom";
 
+axios.defaults.baseURL = 'http://localhost:8080/api/';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <App />
+      </BrowserRouter>
   </React.StrictMode>
 );
 

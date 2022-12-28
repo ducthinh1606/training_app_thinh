@@ -1,0 +1,59 @@
+.App-header {
+  background-color: whitesmoke;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.header {
+  float: right;
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    .dropdown-content {
+      display: block;
+    }
+
+    .user-dropdown {
+      background-color: #3e8e41;
+    }
+  }
+}
+
+.user-dropdown {
+  background-color: #76b852;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  height: 40px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+}

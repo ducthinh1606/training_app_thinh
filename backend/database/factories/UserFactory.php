@@ -16,7 +16,7 @@ class UserFactory extends Factory
     {
         return [
             'username' => 'admin',
-            'password' => '$2a$12$JMQLCKQmcXEKQGXlJIAdzu3.yawo42M54nmB/o.ArWF7ACReJsKUG', // 12345678
+            'password' => '12345678',
         ];
     }
 

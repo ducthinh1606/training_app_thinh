@@ -21,6 +21,9 @@ Route::namespace('Api')->group(function () {
     Route::middleware(['auth:api'])->group(function () {
         Route::post('logout', 'AuthController@logout');
 
+        // Get data user logged in
+        Route::get('info-user', 'AuthController@getUser');
+
         // Task statuses
         Route::get('task-statuses', 'TaskStatusController@index');
         Route::post('task-statuses', 'TaskStatusController@store');
