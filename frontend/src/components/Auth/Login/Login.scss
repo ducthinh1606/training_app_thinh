@@ -1,0 +1,54 @@
+.container {
+  background: #E8FFFC;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  text-align: center;
+
+  form {
+    background: whitesmoke;
+    border: 3px solid #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 5px 10px #76b852;
+    width: 30%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  input[type=text], input[type=password] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #76b852;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 20%;
+    height: 40px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  table.login {
+    width: 100%;
+
+    label {
+      float: right;
+    }
+  }
+}

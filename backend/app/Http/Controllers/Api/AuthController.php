@@ -63,6 +63,13 @@ class AuthController extends BaseController
         return $this->sendSuccessNoData(SuccessType::CODE_201, trans('response.success'));
     }
 
+    public function getUser()
+    {
+        $user = auth()->user();
+
+        return $this->sendSuccess($user, trans('response.success'));
+    }
+
     public function logout()
     {
         auth()->logout();
