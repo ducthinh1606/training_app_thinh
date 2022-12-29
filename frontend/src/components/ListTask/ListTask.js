@@ -23,7 +23,7 @@ function ListTask() {
     return (
         <div className="list-task">
             <div className="title">
-                <a>List Tasks</a>
+                <span>List Tasks</span>
             </div>
             <div className="search">
                 <form className="form-search">

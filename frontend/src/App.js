@@ -19,7 +19,7 @@ function App() {
             .catch(() => {
                 navigate('/login')
             })
-    }, [])
+    }, [navigate])
 
     return (
         <div className="App">
