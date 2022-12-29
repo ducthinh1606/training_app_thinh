@@ -29,5 +29,11 @@ Route::namespace('Api')->group(function () {
         Route::post('task-statuses', 'TaskStatusController@store');
         Route::put('task-statuses/{id}', 'TaskStatusController@update');
         Route::delete('task-statuses/{id}', 'TaskStatusController@destroy');
+
+        //Task
+        Route::get('tasks', 'TaskController@index');
+        Route::post('tasks', 'TaskController@store');
+        Route::put('tasks/{id}', 'TaskController@update');
+        Route::delete('tasks/{id}', 'TaskController@destroy');
     });
 });
