@@ -1,13 +1,22 @@
 import React from "react";
 import "./Header.scss"
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 function Header() {
+    const navigate = useNavigate()
+
     const logout = () => {
-        axios.post('logout')
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        }
+
+        axios.post('logout', null, config)
             .then(res => {
                 localStorage.clear()
+                navigate('/login')
             })
     }
 
@@ -24,7 +33,7 @@ function Header() {
                         <span>{localStorage.getItem('username')}</span>
                     </button>
                     <div className="dropdown-content">
-                        <Link to={'/login'} onClick={logout}>Log out</Link>
+                        <a href="#" onClick={logout}>Log out</a>
                     </div>
                 </div>
             </header>

@@ -1,20 +1,34 @@
 import React, {useState} from "react";
 import "./AddTask.scss"
 import ReactModal from "react-modal";
+import axios from "axios";
 
 function AddTask() {
     let [showModal, setShowModal] = useState(false)
     let [notEstimate, setNotEstimate] = useState(true)
-    let [taskName, setTaskName] = useState()
-    let [estimateDate, setEstimateDate] = useState()
-    let [estimateTime, setEstimateTime] = useState()
+    let [taskName, setTaskName] = useState("")
+    let [estimate, setEstimate] = useState("")
 
-    const addTask = e => {
+    const addTask = () => {
         const data = {
             task_name: taskName,
-            estimate: !notEstimate ? estimateDate + " " + estimateTime : ""
+            estimate: !notEstimate ? estimate : ""
         }
-        alert(data.estimate)
+
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        }
+
+        axios.post('tasks', data, config)
+            .then(res => {
+                alert(res.data.message)
+                setShowModal(false)
+            })
+            .catch(err => {
+                alert(JSON.stringify(err.response.data.error.message))
+            })
     }
 
     return (
@@ -25,10 +39,10 @@ function AddTask() {
                 className="modal-add-task"
                 ariaHideApp={false}
             >
-                <form onSubmit={addTask}>
+                <div className="form-add-task">
                     <h1>New Task</h1>
 
-                    <table className="form-add-task">
+                    <table className="table-add-task">
                         <tbody>
                         <tr>
                             <td><label htmlFor="">Task title: </label></td>
@@ -39,12 +53,10 @@ function AddTask() {
                         </tr>
                         <tr>
                             <td><label htmlFor="">Estimate: </label></td>
-                            <td><input type="date" name="estimate-date" className="estimate-date"
-                                       onChange={e => setEstimateDate(e.target.value)} required={true}
-                                       disabled={notEstimate}/>
-                                <input type="time" name="estimate-time" className="estimate-time"
-                                       onChange={e => setEstimateTime(e.target.value)} required={true}
-                                       disabled={notEstimate}/>
+                            <td>
+                                <input type="datetime-local" name="estimate" className="estimate" required={true}
+                                       disabled={notEstimate}
+                                       onChange={e => setEstimate(e.target.value)}/>
                                 <input type="checkbox" name="estimate"
                                        onChange={() => notEstimate ? setNotEstimate(false) : setNotEstimate(true)}/>
                             </td>
@@ -52,9 +64,9 @@ function AddTask() {
                         </tbody>
                     </table>
 
-                    <button className="btn-add">Add</button>
+                    <button className="btn-add" onClick={addTask}>Add</button>
                     <button onClick={() => setShowModal(false)}>Close</button>
-                </form>
+                </div>
             </ReactModal>
         </div>
     )

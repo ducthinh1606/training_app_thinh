@@ -5,8 +5,8 @@ import {useNavigate} from "react-router-dom";
 
 function Login() {
     const navigate = useNavigate()
-    let [username, setUsername] = useState()
-    let [password, setPassword] = useState()
+    let [username, setUsername] = useState("")
+    let [password, setPassword] = useState("")
     const login = e => {
         e.preventDefault();
 
@@ -28,12 +28,11 @@ function Login() {
                 axios.get('info-user', config)
                     .then(res => {
                         localStorage.setItem('username', res.data.data.username)
+                        navigate('/')
                     })
                     .catch(err => {
                         console.log(err)
                     })
-
-                navigate('/')
             })
             .catch(err => {
                 console.log(err)

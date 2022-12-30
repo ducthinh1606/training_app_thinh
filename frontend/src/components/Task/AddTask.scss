@@ -21,7 +21,7 @@
 .modal-add-task {
   background: #b8daff;
   width: 750px;
-  height: 45%;
+  height: 400px;
   position: fixed;
   top: 40%;
   left: 50%;
@@ -29,7 +29,7 @@
   text-align: center;
   border-radius: 8px;
 
-  form {
+  .form-add-task {
     background: whitesmoke;
     border-radius: 10px;
     position: fixed;
@@ -38,7 +38,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    input[type=text], input[type=date], input[type=time] {
+    input[type=text], input[type=datetime-local] {
       height: 40px;
       padding: 12px 20px;
       margin: 8px 0;
@@ -59,8 +59,8 @@
         width: 400px;
       }
 
-      .estimate-date, .estimate-time {
-        width: 190px;
+      .estimate {
+        width: 380px;
       }
     }
 
