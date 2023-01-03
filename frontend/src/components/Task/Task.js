@@ -5,8 +5,8 @@ function Task({task}) {
     return (
         <div className="task">
             <div className="task-content">
-                <span title={task.title} className="task-title">{task.title}</span>
-                <span className="task-estimate">({task.estimate})</span>
+                <span title={task.task_name} className="task-title">{task.task_name}</span>
+                <span className="task-estimate">{task.estimate ?? "(not estimate)"}</span>
             </div>
             <div className="action">
                     <span><a href="#"><svg width="20px" height="20px" xmlns="http://www.w3.org/2000/svg"

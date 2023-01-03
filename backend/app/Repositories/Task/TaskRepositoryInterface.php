@@ -8,5 +8,5 @@ use App\Repositories\BaseRepositoryInterface;
 
 interface TaskRepositoryInterface extends BaseRepositoryInterface
 {
-    //
+    public function getListTask($filters);
 }
