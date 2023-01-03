@@ -1,24 +1,53 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./ListTask.scss"
 import ListTaskByStatus from "../ListTaskByStatus/ListTaskByStatus";
+import axios from "axios";
 
 function ListTask() {
-    const demoTaskStatus = [
-        {
-            status: "1",
-            name: "Status 1"
-        },
-        {
-            status: "2",
-            name: "Status 2"
-        },
-        {
-            status: "3",
-            name: "Status 3"
-        }
-    ]
+    const [listTaskStatus, setListTaskStatus] = useState([])
+    const [listTask, setListTask] = useState([])
+    const [filterTaskStatus, setFilterTaskStatus] = useState("")
+    const [filterTaskName, setFilterTaskName] = useState("")
 
-    const listTaskStatus = demoTaskStatus.map((data) => <ListTaskByStatus key={data.status} taskStatus={data}/>)
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
+    }
+
+    useEffect(() => {
+        axios.get('task-statuses', config)
+            .then(res => {
+                setListTaskStatus(res.data.data)
+            })
+
+        axios.get('tasks', config)
+            .then(res => {
+                setListTask(res.data.data)
+            })
+    }, [])
+
+    const search = () => {
+        const params = {
+            params: {
+                task_name: filterTaskName,
+                task_status_id: filterTaskStatus
+            },
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        }
+        axios.get('tasks', params)
+            .then(res => {
+                setListTask(res.data.data)
+            })
+    }
+
+    const showListTaskStatus = listTaskStatus.map((data) => <ListTaskByStatus key={data.id} taskData={{
+        status: data,
+        list: listTask
+    }}/>)
+    const statusOption = listTaskStatus.map((data) => <option key={data.id} value={data.id}>{data.status_name}</option>)
 
     return (
         <div className="list-task">
@@ -26,24 +55,21 @@ function ListTask() {
                 <span>List Tasks</span>
             </div>
             <div className="search">
-                <form className="form-search">
+                <div className="form-search">
                     <div className="input-task-name">
                         <label>Task name: </label>
-                        <input type="text" placeholder="Task name"/>
+                        <input type="text" onChange={e => setFilterTaskName(e.target.value)} placeholder="Task name"/>
                     </div>
 
                     <div className="select-task-status">
                         <label>Status: </label>
-                        <select name="select-task-status">
-                            <option defaultValue="">all</option>
-                            <option value="1">status</option>
-                            <option value="2">status</option>
-                            <option value="3">status</option>
-                            <option value="4">status</option>
+                        <select onChange={e => setFilterTaskStatus(e.target.value)} name="select-task-status">
+                            <option defaultValue={null} value={0}>All</option>
+                            {statusOption}
                         </select>
                     </div>
 
-                    <button className="search-button">
+                    <button className="search-button" onClick={search}>
                         <svg width="15px" height="15px" fill="white" xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 512 512">
                             <path
@@ -51,10 +77,10 @@ function ListTask() {
                         </svg>
                         Search
                     </button>
-                </form>
+                </div>
             </div>
             <div className="list">
-                {listTaskStatus}
+                {showListTaskStatus}
             </div>
 
         </div>

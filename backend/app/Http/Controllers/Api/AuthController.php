@@ -41,7 +41,7 @@ class AuthController extends BaseController
         $data = [
             'token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => auth()->factory()->getTTL()
+            'expires_in' => auth()->factory()->getTTL() * 60
         ];
 
         return $this->sendSuccess($data, trans('response.success'));

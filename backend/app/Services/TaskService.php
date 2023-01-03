@@ -16,10 +16,21 @@ class TaskService
         $this->taskRepository = $taskRepository;
     }
 
-    public function getListTask()
+    public function getListTask($params)
     {
         try {
-            return $this->taskRepository->all();
+            $filters = [
+                'task_name' => [
+                    'query' => $params['task_name'] ?? "",
+                    'type' => 'like'
+                ],
+                'task_status_id' => [
+                    'query' => $params['task_status_id'] ?? "",
+                    'type' => '='
+                ]
+            ];
+
+            return $this->taskRepository->getListTask($filters);
         } catch (Exception $exception) {
             return false;
         }

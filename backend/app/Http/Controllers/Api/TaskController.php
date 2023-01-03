@@ -7,6 +7,7 @@ use App\Enums\SuccessType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\TaskRequest;
 use App\Services\TaskService;
+use Illuminate\Http\Request;
 
 class TaskController extends BaseController
 {
@@ -21,9 +22,14 @@ class TaskController extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = $this->taskService->getListTask();
+        $params = $request->only([
+            'task_name',
+            'task_status_id'
+        ]);
+
+        $data = $this->taskService->getListTask($params);
 
         return $this->sendSuccess($data, trans('response.success'));
     }
