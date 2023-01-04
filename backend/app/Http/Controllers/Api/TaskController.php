@@ -59,11 +59,17 @@ class TaskController extends BaseController
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
-        //
+        $detail = $this->taskService->show($id);
+
+        if (!$detail) {
+            return $this->sendError(ErrorType::CODE_5002, ErrorType::STATUS_5002, trans('errors.MSG_5002'));
+        }
+
+        return $this->sendSuccess($detail, trans('response.success'));
     }
 
     /**
@@ -77,7 +83,8 @@ class TaskController extends BaseController
     {
         $data = [
             'task_name' => $request->task_name,
-            'estimate' => $request->estimate
+            'estimate' => $request->estimate,
+            'task_status_id' => $request->task_status_id
         ];
         $update = $this->taskService->update($id, $data);
 

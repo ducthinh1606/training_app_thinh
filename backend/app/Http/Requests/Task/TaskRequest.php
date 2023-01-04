@@ -25,7 +25,7 @@ class TaskRequest extends FormRequest
     {
         return [
             'task_name' => "required|max:255",
-            'estimate' => "date_format:Y-m-d H:i|nullable|after:now"
+            'estimate' => "date_format:Y-m-d\TH:i|nullable|after:now"
         ];
     }
 }
