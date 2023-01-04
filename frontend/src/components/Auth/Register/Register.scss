@@ -1,0 +1,27 @@
+.form-register-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+form.form-register-inner {
+  background: whitesmoke;
+  border-radius: 10px;
+  position: absolute;
+  width: 50%;
+  height: 350px;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+
+  button {
+    width: 70px;
+  }
+
+  .btn-register {
+    margin-right: 10px;
+  }
+}
