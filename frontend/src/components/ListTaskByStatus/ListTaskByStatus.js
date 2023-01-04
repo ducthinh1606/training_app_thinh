@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "./ListTaskByStatus.scss"
 import Task from "../Task/Task";
-import axios from "axios";
 
 function ListTaskByStatus({taskData}) {
     const showListTask = taskData.list.map((data) => {

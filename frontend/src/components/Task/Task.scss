@@ -28,8 +28,87 @@
   }
 
   .action {
-    span {
-      margin-left: 5px;
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.modal-edit-task {
+  background: #b8daff;
+  width: 750px;
+  height: 400px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 8px;
+
+  .form-edit-task {
+    background: whitesmoke;
+    border-radius: 10px;
+    position: fixed;
+    width: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    input[type=text], input[type=datetime-local] {
+      height: 40px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    select {
+      height: 40px;
+      padding: 12px 20px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      width: 400px;
+    }
+
+    table {
+      width: 100%;
+
+      label {
+        float: right;
+      }
+
+      .task-name {
+        width: 400px;
+      }
+
+      .estimate {
+        width: 380px;
+      }
+    }
+
+    button {
+      background-color: #76b852;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 10%;
+      height: 30px;
+      margin: 15px 0;
+
+      &.btn-add {
+        margin-right: 10px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }

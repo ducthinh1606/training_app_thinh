@@ -64,4 +64,13 @@ class TaskService
             return false;
         }
     }
+
+    public function show($id)
+    {
+        try {
+            return $this->taskRepository->find($id);
+        } catch (Exception $exception) {
+            return false;
+        }
+    }
 }

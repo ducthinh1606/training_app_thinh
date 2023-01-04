@@ -82,8 +82,13 @@ php artisan view:clear
 
 3. Package update
 ```
+- Backend
 docker-compose exec backend sh
 composer update
+
+- Frontend
+docker-compose exec frontend sh
+npm update
 ```
 
 4. .env config

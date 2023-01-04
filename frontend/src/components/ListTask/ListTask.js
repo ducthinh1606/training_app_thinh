@@ -19,6 +19,7 @@ function ListTask() {
         axios.get('task-statuses', config)
             .then(res => {
                 setListTaskStatus(res.data.data)
+                localStorage.setItem('task_status', JSON.stringify(res.data.data))
             })
 
         axios.get('tasks', config)
