@@ -18,5 +18,7 @@ jobs:
           php-version: '7.4'
       - name: install composer
         run: composer install
+      - name: setup config
+        run: php artisan key:generate
       - name: test execute
         run: php artisan test
