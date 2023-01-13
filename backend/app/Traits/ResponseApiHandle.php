@@ -21,7 +21,7 @@ trait ResponseApiHandle {
             'message' => $message,
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response, $code);
     }
 
     public function responseError($code = 5000, $statusCode = 500, $message = null)
