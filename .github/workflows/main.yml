@@ -18,6 +18,8 @@ jobs:
           php-version: '7.4'
       - name: install composer
         run: composer install
+      - name: copy .env
+        run: cp .env.example .env
       - name: setup config
         run: php artisan key:generate
       - name: test execute
