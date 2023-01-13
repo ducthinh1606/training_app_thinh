@@ -1,1 +1,26 @@
+name: TestWorker
+on:
+  push:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
 
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+      - name: install composer
+        run: composer install
+      - name: copy .env
+        run: cp .env.example .env
+      - name: setup config
+        run: php artisan key:generate
+      - name: test execute
+        run: php artisan test
