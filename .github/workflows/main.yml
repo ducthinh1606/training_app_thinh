@@ -17,6 +17,6 @@ jobs:
         with:
           php_version: 7.4
       - name: install composer
-        run: compose install
+        run: composer install
       - name: test execute
         run: php artisan test
