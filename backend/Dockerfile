@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     openssl \
     git \
-    bash
+    bash \
+    zip \
+    unzip
 
 EXPOSE 9000
