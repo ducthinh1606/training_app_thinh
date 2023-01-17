@@ -12,6 +12,4 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
-
-
 EXPOSE 9000

@@ -1,7 +1,8 @@
 name: TestWorker
 on:
   workflow_run:
-    workflows: ["DockerBuildAndPush"]
+    workflows:
+      - DockerBuildAndPush
     types:
       - completed
 
